@@ -1,5 +1,8 @@
-const phones = JSON.parse(localStorage.getItem("phones"));
-localStorage.setItem("phones", JSON.stringify(phones));
+let phones = [
+  { name: "iphone11", price: "100", qty: "1" },
+  { name: "iphone12", price: "200", qty: "2" },
+  { name: "iphone13", price: "300", qty: "3" },
+];
 let tbody = document.querySelector("tbody");
 
 let showPhones = () => {
@@ -56,7 +59,6 @@ let addPhone = () => {
   };
   phones.push(newPhone);
   showPhones();
-  window.localStorage.setItem("phones", JSON.stringify(phones));
   nameI.value = "";
   priceI.value = "";
   qtyI.value = "";
@@ -78,11 +80,11 @@ let del = (index) => {
   }).then((willDelete) => {
     if (willDelete) {
       phones.splice(index, 1);
-      localStorage.setItem("phones", JSON.stringify(phones));
       showPhones();
     }
   });
 };
+
 
 let update = document.querySelectorAll(".update");
 
@@ -98,7 +100,6 @@ let edit = (index) => {
   row.querySelector(".price-input").classList.remove("d-none");
   row.querySelector(".qty-input").classList.remove("d-none");
   row.querySelector(".save").classList.remove("d-none");
-
 };
 
 
@@ -113,24 +114,25 @@ let save = (index) => {
   phones[index].name = newName.value;
   phones[index].price = newPrice.value;
   phones[index].qty = newQty.value;
-  window.localStorage.setItem("phones", JSON.stringify(phones));
   showPhones();
 };
 
-let form = document.querySelector(".formm");
-let formStatus = false;
-let addBtn = document.querySelector(".addBtn");
-let closeBtn = document.querySelector(".closeBtn");
-let openForm = () => {
-  if (formStatus == false) {
-    form.classList.remove("d-none");
-    formStatus = true;
-    addBtn.classList.add("d-none");
-    closeBtn.classList.remove("d-none");
-  } else {
-    addBtn.classList.remove("d-none");
-    closeBtn.classList.add("d-none");
-    form.classList.add("d-none");
-    formStatus = false;
-  }
-};
+let form =document.querySelector(".formm");
+let formStatus=false;
+let addBtn=document.querySelector(".addBtn")
+let closeBtn=document.querySelector(".closeBtn")
+let openForm=()=>{
+    if (formStatus==false){
+        form.classList.remove("d-none");
+        formStatus=true;
+        addBtn.classList.add("d-none")
+        closeBtn.classList.remove("d-none")
+    }else{
+        
+        addBtn.classList.remove("d-none")
+        closeBtn.classList.add("d-none")
+        form.classList.add("d-none");
+        formStatus=false;
+
+    }
+}
