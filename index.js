@@ -116,7 +116,6 @@ let save = (index) => {
   phones[index].qty = newQty.value;
   showPhones();
 };
-
 let form =document.querySelector(".formm");
 let formStatus=false;
 let addBtn=document.querySelector(".addBtn")
